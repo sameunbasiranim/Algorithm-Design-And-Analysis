@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void sortUsingSelection(int numbers[], int totalSize) // Receives the array and its size for sorting
+{
+    for (int currentPos = 0; currentPos < totalSize - 1; currentPos++) // Move through each position of the array
+    {
+        int smallestPos = currentPos; // Assume the current position contains the smallest value
+
+        for (int nextPos = currentPos + 1; nextPos < totalSize; nextPos++) // Search the remaining unsorted part
+        {
+            if (numbers[nextPos] < numbers[smallestPos]) // Check whether a smaller value exists
+            {
+                smallestPos = nextPos; // Update the position of the smallest value found
+            }
+        }
+
+        if (smallestPos != currentPos) // Perform swap only when needed
+        {
+            swap(numbers[currentPos], numbers[smallestPos]); // Place the smallest value in its correct position
+        }
+    }
+}
+
+int main()
+{
+    int totalSize; // Stores the number of elements
+    cin >> totalSize;
+
+    int numbers[totalSize]; // Array to hold user input values
+
+    for (int index = 0; index < totalSize; index++) // Read all array elements
+    {
+        cin >> numbers[index];
+    }
+
+    sortUsingSelection(numbers, totalSize); // Sort the array using Selection Sort
+
+    for (int index = 0; index < totalSize; index++) // Display the sorted array
+    {
+        cout << numbers[index] << " ";
+    }
+
+    return 0;
+}
